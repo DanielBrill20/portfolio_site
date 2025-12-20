@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyline Tote Bag | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .bag-hero-image {
+            width: 652px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 40px;
+        }
+        .bag-gallery {
+            display: grid;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .bag-gallery-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .bag-chess {
+            width: 409px;
+            height: 728px;
+            object-fit: cover;
+        }
+        .bag-small {
+            width: 267px;
+            height: 400px;
+            object-fit: cover;
+        }
+        .bag-full {
+            width: 551px;
+            height: 310px;
+            object-fit: cover;
+        }
+        @media (max-width: 992px) {
+            .bag-gallery-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .bag-chess, .bag-small, .bag-full {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>Skyline Tote Bag</h1>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Image -->
+            <img src="assets/bag_supplies.jpg" alt="Skyline Tote Bag" class="bag-hero-image">
+
+            <!-- Description -->
+            <div class="project-description">
+                <p>As part of an Introduction to Sewing class at the University of Cincinnati, I created my first sewing project: this reversible tote bag. I sourced the fabric from a local Cincinnati shop, leaning heavily into my love of black and white. In class, we used industrial Juki sewing machines, which my professor called the "Ferrari of sewing machines." Their intense power requires a delicate touch, which forced me to focus on proper technique more than I would have on a home machine. Straight stitches, flipping pieces inside out, and strategically pulling fabric through holes, in a process that felt like magic, created this. The tote then quickly replaced the JOANN bag that once held all my sewing supplies.</p>
+            </div>
+
+            <!-- Gallery Section -->
+            <section class="project-section">
+                <h2>Gallery</h2>
+                <div class="bag-gallery">
+                    <div class="bag-gallery-row">
+                        <img src="assets/bag_chess.jpg" alt="Tote bag with chess board pattern" class="bag-chess">
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <img src="assets/bag_outside.jpg" alt="Tote bag outside" class="bag-small">
+                            <img src="assets/bag_inside.jpg" alt="Tote bag inside" class="bag-small">
+                        </div>
+                    </div>
+                    <div class="bag-gallery-row">
+                        <img src="assets/bag_full.jpg" alt="Tote bag full view" class="bag-full">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

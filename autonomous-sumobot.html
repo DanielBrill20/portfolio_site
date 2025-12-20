@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Sumobot | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .sumobot-hero-images {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .sumobot-hero-images img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+        .mount-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .mount-images-grid .image-with-caption img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            object-fit: cover;
+        }
+        .large-image-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        @media (max-width: 992px) {
+            .sumobot-hero-images {
+                flex-wrap: wrap;
+            }
+            .sumobot-hero-images img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>Autonomous Sumobot</h1>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Images -->
+            <div class="sumobot-hero-images">
+                <img src="assets/sumobot_front.jpg" alt="Sumobot Front">
+                <img src="assets/sumobot_side_cropped.jpg" alt="Sumobot Side">
+                <img src="assets/sumobot_back.jpg" alt="Sumobot Back">
+            </div>
+
+            <!-- Overview Section -->
+            <section class="project-section">
+                <h2>Overview</h2>
+                <p>As part of my first rotation as a Software Engineer Co-op at GE Appliances, I led a team of two other co-ops in the creation of an autonomous sumobot. Throughout the semester, we competed against six other teams across three competitions, finishing with an undefeated record. We followed the official <a href="https://robogames.net/rules/all-sumo.php" target="_blank">RoboGames rules</a> for the Mini Sumo class.</p>
+                <p>For each match, our bot simply had to push the opponent out of the arena, called a Dohyo. The Dohyo is a small 77 cm diameter circle surrounded by a white border. Bots must be able to detect opponents, have the strength to push them, and stay within the Dohyo. Throughout the project, my focus was on the hardware and software related to bot movement and opponent detection.</p>
+            </section>
+
+            <!-- Opponent Detection Section -->
+            <section class="project-section">
+                <h2>Opponent Detection</h2>
+                <p>One of my responsibilities was designing, prototyping, and building a foolproof opponent detection system. To do so, we used four IR sensors to monitor the front, back, and sides of our bot. The back sensor was a fail-safe in the case of accidentally getting turned around, as the other three sensors handled all the logic.</p>
+                <p>Through reading spec sheets and much empirical testing, I was able to determine the exact field of view of our sensors. I was also able to detect manufacturing/calibration imperfections to compensate for sensors that couldn't see as far, had a skewed field of view, etc. With this information, I designed a 3D sensor mount model. I went through several prototypes, including ones without the front or back sensors, but landed on a winning design.</p>
+                <p>The two side sensors looked forward and out at a roughly 15-degree angle to detect our opponent drifting towards our sides. When another bot moved off-center from ours, we corrected by spinning toward our opponent until only our front sensor detected anything. The mount secured snugly into existing holes on the Adafruit METRO M0 Express, the control board for our bot.</p>
+
+                <!-- Mount Images Grid -->
+                <div class="mount-images-grid">
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_mount_prototype_side.png" alt="Initial mount design" style="width: 272px; height: 184px;">
+                        <p class="caption">Initial mount design</p>
+                    </div>
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_mount_on_board_top.jpg" alt="Prototype on board" style="width: 155px; height: 155px;">
+                        <p class="caption">Prototype on board</p>
+                    </div>
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_mount_front.png" alt="Final mount design - front" style="width: 300px; height: 190px;">
+                        <p class="caption">Final mount design - front</p>
+                    </div>
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_mount_side.png" alt="Final mount design - side" style="width: 351px; height: 238px;">
+                        <p class="caption">Final mount design - side</p>
+                    </div>
+                </div>
+
+                <div class="large-image-row">
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_mount_prototype_underside.png" alt="Underside pegs for Metro connection" style="width: 310px; height: 310px; object-fit: cover;">
+                        <p class="caption">Underside pegs for Metro connection</p>
+                    </div>
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_board.jpg" alt="Adafruit METRO M0 Express" style="width: 234px; height: 156px; object-fit: cover;">
+                        <p class="caption">Adafruit METRO M0 Express</p>
+                    </div>
+                    <div class="image-with-caption">
+                        <img src="assets/sumobot_mount_on_board_front.jpg" alt="Pegs inserted into board" style="width: 253px; height: 169px; object-fit: cover;">
+                        <p class="caption">Pegs inserted into board</p>
+                    </div>
+                </div>
+
+                <div class="image-with-caption" style="text-align: center; margin: 30px 0;">
+                    <img src="assets/sumobot_mount_DEA_label.png" alt="DEA nametag" style="max-width: 500px; width: 100%; height: auto;">
+                    <p class="caption">DEA nametag—a playful combination of the team's initials and a reference to Breaking Bad</p>
+                </div>
+            </section>
+
+            <!-- Unlimited Power Section -->
+            <section class="project-section">
+                <h2>Unlimited Power!</h2>
+                <p>Once locked on target, our bot charged forward. Throughout competition, we noticed that many matches came down to a head-to-head pushing contest. All teams started with the same sumobot chassis and batteries, so for many teams, this scenario was essentially a coin flip. Our secret to success was winning 100% of these matchups.</p>
+                <p>To do so, I leveraged physics over out-coding the competition. All bots had to weigh under 500g, so we couldn't add more weight. However, we could change our center of gravity to be closer to our front shield for pushing. We found that our traction and power were best when the center of gravity was directly above the front wheels. While the bots were rear wheel drive, the continuous tracks mitigated many of the traction concerns. The greatest loss of traction was when the front of the bot would pop up, an issue that lessened with a front-heavy build.</p>
+                <p>I further strengthened our bot with custom batteries. The originally provided AA batteries were rechargeable Nickel-Metal Hydride (NiMH) ones, which provide a nominal voltage of 1.2V. With four of these in series inside the chassis, we had 4.8V of power. This meant we were ever so slightly undervolting our components, which expected 5V. Instead, I opted for lithium-ion batteries, which provide the higher 1.5V of alkaline AA batteries with the consistent power draw of NiMH ones. This meant we supplied 6V to the board, which safely stepped it down to 5V for our components. We tied it all together by making another center of gravity adjustments, as lithium-ion batteries are significantly lighter than NiMH.</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

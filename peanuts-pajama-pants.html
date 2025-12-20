@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peanuts Pajama Pants | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .pants-hero-image {
+            width: 650px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 40px;
+        }
+        .pants-gallery {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .pants-gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+        .pants-decorative {
+            width: 372px;
+            height: 494px;
+            object-fit: cover;
+        }
+        .pants-waist {
+            width: 475px;
+            height: 376px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>Peanuts Pajama Pants</h1>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Image -->
+            <img src="assets/pants_cover.jpg" alt="Peanuts Pajama Pants" class="pants-hero-image">
+
+            <!-- Description -->
+            <div class="project-description">
+                <p>I created these lightweight cotton Peanuts Christmas pajama pants for a family member, perfect for those who want to get into the holiday spirit even in the warmer months! The waist features dual-colored drawstrings connected in the back via elastic to provide extra comfort.</p>
+            </div>
+
+            <!-- Gallery Section -->
+            <section class="project-section">
+                <h2>Gallery</h2>
+                <div class="pants-gallery">
+                    <img src="assets/pants_decorative.jpg" alt="Peanuts fabric detail" class="pants-decorative">
+                    <img src="assets/pants_waist.jpg" alt="Pants waist with drawstrings" class="pants-waist">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

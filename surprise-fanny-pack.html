@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Surprise" Fanny Pack | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .fanny-hero-image {
+            width: 650px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 40px;
+        }
+        .fanny-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 350px);
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .fanny-gallery img {
+            width: 350px;
+            height: 197px;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .fanny-gallery {
+                grid-template-columns: 1fr;
+            }
+            .fanny-gallery img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>"Surprise" Fanny Pack</h1>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Image -->
+            <img src="assets/fanny_pack_shirt.jpg" alt="Surprise Fanny Pack" class="fanny-hero-image">
+
+            <!-- Description -->
+            <div class="project-description">
+                <p>I created this nylon fanny pack/crossbody bag to practice zippers, serging, and working with slick materials. The outside and back pocket are white with black accents and stitching. Upon opening the main compartment, you're greeted with a bright neon orange lining, interior pocket, and cleanly serged edges. The orange interior was inspired by Christian Louboutin "red bottoms" and the idea of hidden luxury. It also doubles as a practical solution for seeing contents in a dark environment!</p>
+            </div>
+
+            <!-- Gallery Section -->
+            <section class="project-section">
+                <h2>Gallery</h2>
+                <div class="fanny-gallery">
+                    <img src="assets/fanny_pack_closed.jpg" alt="Fanny pack closed">
+                    <img src="assets/fanny_pack_back.jpg" alt="Fanny pack back">
+                    <img src="assets/fanny_pack_zipper.jpg" alt="Fanny pack zipper detail">
+                    <img src="assets/fanny_pack_open.jpg" alt="Fanny pack open showing orange interior">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 LED Matrix Pong Animation | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .pong-layout {
+            display: flex;
+            gap: 50px;
+            margin: 40px 0;
+            align-items: flex-start;
+        }
+        .pong-layout .text-column {
+            flex: 0 0 367px;
+        }
+        .pong-layout .video-column {
+            flex: 1;
+        }
+        .pong-video-container {
+            width: 535px;
+            aspect-ratio: 1/1;
+            position: relative;
+        }
+        .pong-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (max-width: 992px) {
+            .pong-layout {
+                flex-direction: column;
+            }
+            .pong-layout .text-column {
+                flex: 1;
+            }
+            .pong-video-container {
+                width: 100%;
+                max-width: 535px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>ESP32 LED Matrix Pong Animation</h1>
+            <a href="https://github.com/DanielBrill20/esp32_led_matrix_pong_animation" target="_blank" class="github-btn">Checkout the GitHub</a>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Image -->
+            <div class="project-hero-media">
+                <img src="assets/pong_still.png" alt="Pong Animation Still" style="max-width: 650px; width: 100%;">
+            </div>
+
+            <!-- Description -->
+            <div class="project-description">
+                <p>Since I began coding in 2020, I have frequently recreated Pong anytime I'm experimenting with a new language or visual interface. It has been a sort of litmus test to explore what's possible, like my own "Hello World" project. My goal for this project was to take advantage of the quick prototyping nature of the Arduino framework to explore the <a href="https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA" target="_blank">ESP32-HUB75-MatrixPanel-DMA library</a>. In doing so, I was able to get my first sketch running on a HUB75 LED matrix with a smooth framerate and no artifacting. The result? A CPU-controlled Pong simulation in an eternal battle between two bots.</p>
+            </div>
+
+            <!-- Overview Section -->
+            <section class="project-section">
+                <h2>Overview</h2>
+                <div class="pong-layout">
+                    <div class="text-column">
+                        <p>Coded purely in C++, two classes define Paddle and Ball objects. Each object includes instructions for how it is drawn on the matrix, custom movement and collision logic, and pseudo-random fluctuations to provide visual interest and unpredictability. The simple shapes of Pong easily allow the Adafruit GFX Graphics Library to do some visual heavy lifting, providing performance advantages over direct pixel manipulation. The Arduino setup function handles LED matrix initialization, and the loop controls frame updates on the matrix at a consistent 60 FPS.</p>
+                    </div>
+                    <div class="video-column">
+                        <div class="pong-video-container">
+                            <iframe src="https://player.vimeo.com/video/1147559123?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="pong_demo"></iframe>
+                        </div>
+                        <p class="caption" style="text-align: center; margin-top: 10px;">Gameplay Demo</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

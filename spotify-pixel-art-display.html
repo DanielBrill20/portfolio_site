@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Pixel Art Display | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .spotify-album-images {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .spotify-album-images img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .spotify-album-images .image-with-caption {
+            text-align: center;
+        }
+        .spotify-album-images .image-with-caption .caption {
+            margin-top: 10px;
+        }
+        .spotify-layout {
+            display: flex;
+            gap: 50px;
+            margin: 40px 0;
+        }
+        .spotify-layout .text-column {
+            flex: 0 0 365px;
+        }
+        .spotify-layout .media-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .spotify-pi-image {
+            width: 273px;
+            height: 154px;
+            object-fit: cover;
+        }
+        .spotify-gol-video {
+            width: 460px;
+            aspect-ratio: 16/9;
+        }
+        .tech-images-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        .tech-images-grid .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .tech-images-grid .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        @media (max-width: 992px) {
+            .spotify-layout {
+                flex-direction: column;
+            }
+            .spotify-layout .text-column {
+                flex: 1;
+            }
+            .spotify-album-images {
+                flex-wrap: wrap;
+            }
+            .tech-images-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>Spotify Pixel Art Display</h1>
+            <a href="https://github.com/DanielBrill20/spotify-pixel-art-display" target="_blank" class="github-btn">Checkout the GitHub</a>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Video -->
+            <div class="project-hero-media">
+                <iframe src="https://player.vimeo.com/video/1147558667?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="matrix_song_demo"></iframe>
+            </div>
+
+            <!-- Description -->
+            <div class="project-description">
+                <p>My life revolves around music. I, like many others, correlate songs to pivotal moments in my life. And like many others, what I am listening to depends on the day's vibe. This project aims to dynamically incorporate music listening into home décor, instantly bringing personalization and variety into any space. Like a digital picture frame for your music, this 64x64 LED matrix displays a pixel art portrayal of the album cover for the song you're actively listening to on Spotify. When you're not listening to Spotify? The frame displays a mesmerizing, slowly fading rainbow gradient visualization of Conway's Game of Life to add ambiance to the room.</p>
+            </div>
+
+            <!-- Album Images -->
+            <div class="spotify-album-images">
+                <div class="image-with-caption">
+                    <img src="assets/matrix_cover_1_cropped.jpg" alt="Flower Boy">
+                    <p class="caption">Flower Boy</p>
+                </div>
+                <div class="image-with-caption">
+                    <img src="assets/matrix_gol.jpg" alt="Conway's Game of Life">
+                    <p class="caption">Conway's Game of Life</p>
+                </div>
+                <div class="image-with-caption">
+                    <img src="assets/matrix_cover_2.jpg" alt="NOT ALL HEROES WEAR CAPES">
+                    <p class="caption">NOT ALL HEROES<br>WEAR CAPES</p>
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <section class="project-section">
+                <h2>Overview</h2>
+                <div class="spotify-layout">
+                    <div class="text-column">
+                        <p>The core of the project is a backend Python server that repeatedly calls the Spotify Web API to get the currently playing track or podcast episode for the user. The script runs on a Raspberry Pi Zero 2 W that I plan on turning into a sort of "home assistant" and the hub for various IoT projects. Once the server detects a change in album cover, it prepares the image to be displayed on the LED matrix. It then sends the data via an HTTP request to an ESP32-S3, which controls the matrix. This has been a passion project of mine that I first dreamt up when I began my first year as a Computer Science student. I also used it as an opportunity to learn the <a href="https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA" target="_blank">ESP32-HUB75-MatrixPanel-DMA library</a>, more about the ESP-IDF framework, and embedded constraints like memory types and how to store large buffers.</p>
+                    </div>
+                    <div class="media-column">
+                        <div class="image-with-caption">
+                            <img src="assets/matrix_pi.jpg" alt="Raspberry Pi Zero 2 W" class="spotify-pi-image">
+                            <p class="caption">Raspberry Pi Zero 2 W running the server</p>
+                        </div>
+                        <div class="video-container" style="padding-bottom: 56.25%; max-width: 460px;">
+                            <iframe src="https://player.vimeo.com/video/1147558569?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="matrix_gol_demo"></iframe>
+                        </div>
+                        <p class="caption" style="text-align: center;">Game of Life demo</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Highlights Section -->
+            <section class="project-section">
+                <div class="two-column">
+                    <div class="text-column">
+                        <h2>Technical Highlights</h2>
+                        <ul class="tech-highlights">
+                            <li>The microcontroller utilizes a DMA (Direct Memory Access) double buffer for rapid and smooth drawing of images. While one image is being displayed with data in the front buffer, data can be loaded into the back buffer. Once the back buffer image is ready, the buffers are swapped for immediate frame transition. Otherwise, the user would see images being drawn line by line.</li>
+                            <li>Both the server and firmware code are highly customizable, allowing for easy handling of various LED panel dimensions, pin mappings, etc. On the firmware side, there is a custom ESP-IDF "menuconfig" menu for no-code setup.</li>
+                            <li>The firmware relies on numerous dependencies in the form of git submodules. Several conflicts arise that can be resolved through ESP-IDF's CMakeLists.txt files. To simplify development, I've added custom scripts to apply patches to each submodule and resolve conflicts.</li>
+                            <li>Attached to the panel is a translucent piece of black acrylic, which acts as a slight diffuser screen, increases contrast, and hides unlit pixels.</li>
+                        </ul>
+                    </div>
+                    <div class="media-column">
+                        <div class="tech-images-grid">
+                            <div class="left-column">
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_pins.jpg" alt="ESP HUB75 pinout" style="width: 200px; height: 133px; object-fit: cover;">
+                                    <p class="caption">ESP HUB75 pinout</p>
+                                </div>
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_power_wires.jpg" alt="Power cables" style="width: 164px; height: 205px; object-fit: cover;">
+                                    <p class="caption">Power cables</p>
+                                </div>
+                            </div>
+                            <div class="right-column">
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_put_together.jpg" alt="Complete matrix setup" style="width: 200px; height: 200px; object-fit: cover;">
+                                    <p class="caption">Complete matrix setup</p>
+                                </div>
+                                <div style="display: flex; gap: 15px;">
+                                    <div class="image-with-caption">
+                                        <img src="assets/matrix_back.jpg" alt="Back of matrix" style="width: 125px; height: 125px; object-fit: cover;">
+                                        <p class="caption">Back of matrix</p>
+                                    </div>
+                                    <div class="image-with-caption">
+                                        <img src="assets/matrix_acrylic.jpg" alt="Front of matrix with acrylic diffuser" style="width: 125px; height: 125px; object-fit: cover;">
+                                        <p class="caption">Front of matrix with<br>acrylic diffuser</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Future Features Section -->
+            <section class="project-section">
+                <h2>Future Features</h2>
+                <p>I plan to continue this project for some time as I make it the ultimate décor piece. For one, I intend to learn CNC woodworking in order to make a polished, proper enclosure. I also have plans for a new screensaver—think digital clock meets Subway Surfers.</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

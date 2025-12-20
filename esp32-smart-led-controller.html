@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Smart LED Controller | Daniel Brill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .smart-led-layout {
+            display: flex;
+            gap: 50px;
+            margin: 40px 0;
+            align-items: flex-start;
+        }
+        .smart-led-layout .app-screenshot {
+            width: 233px;
+            height: 482px;
+            object-fit: cover;
+        }
+        .smart-led-layout .mcu-image {
+            width: 324px;
+            height: 324px;
+            object-fit: cover;
+        }
+        .smart-led-layout .images-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        @media (max-width: 992px) {
+            .smart-led-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/daniel_brill_logo.png" alt="Daniel Brill Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#bio" class="nav-link">Bio</a></li>
+            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+            <li><a href="index.html#art" class="nav-link">Art</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-page">
+        <!-- Project Header -->
+        <header class="project-header">
+            <h1>ESP32 Smart LED Controller</h1>
+            <a href="https://github.com/DanielBrill20/esp32_smart_led_controller" target="_blank" class="github-btn">Checkout the GitHub</a>
+        </header>
+
+        <div class="project-content">
+            <!-- Hero Video -->
+            <div class="project-hero-media">
+                <iframe src="https://player.vimeo.com/video/1147559145?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="smart_demo"></iframe>
+            </div>
+
+            <!-- Overview Section -->
+            <section class="project-section">
+                <h2>Overview</h2>
+                <p>The goal of this project was simple: learn as many skills as possible related to microcontrollers and inter-device communication in preparation for larger IoT projects. Research led me to the ESP32-S3 for its processing power, memory, and, most importantly, Wi-Fi and BLE connectivity. Since I was already familiar with the Arduino framework, I also wanted to explore ESP-IDF for its superb hardware control and steeper learning curve, challenging me to truly understand the MCU.</p>
+                <p>To accomplish this goal, I decided to create a simple Flutter app to control the onboard addressable RGB LED on my ESP32-S3-DevKitC-1. The app consists of an on/off switch, color customization sliders, and two blink modes. The first, titled "Blinky", allows the user to blink the LED in a configurable millisecond interval (inspired by the common Blink project, the "Hello World" of embedded programming). The second is a Morse code encoder, where a user can type any message to be communicated by the LED in Morse code.</p>
+                <p>The app communicates with the ESP via HTTP POST requests. In the future, I plan to add BLE communication for the sake of learning the protocol.</p>
+            </section>
+
+            <!-- Images Section -->
+            <div class="smart-led-layout">
+                <div class="images-column">
+                    <div class="image-with-caption">
+                        <img src="assets/smart_app_screenshot.png" alt="Flutter App" class="app-screenshot">
+                        <p class="caption">Flutter App</p>
+                    </div>
+                </div>
+                <div class="images-column">
+                    <div class="image-with-caption">
+                        <img src="assets/smart_mcu_cropped.jpg" alt="ESP32-S3-DevKitC-1" class="mcu-image">
+                        <p class="caption">ESP32-S3-DevKitC-1, equipped with a<br>small addressable RGB LED</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
