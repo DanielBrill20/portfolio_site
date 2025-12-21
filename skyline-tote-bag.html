@@ -17,34 +17,46 @@
             margin: 0 auto 40px;
         }
         .bag-gallery {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
-            justify-content: center;
+            align-items: center;
             margin-top: 30px;
         }
-        .bag-gallery-row {
+        .bag-top-row {
             display: flex;
             gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
+        }
+        .bag-outside-inside {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        .bag-bottom-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
         }
         .bag-chess {
             width: 409px;
-            height: 728px;
-            object-fit: cover;
+            height: auto;
         }
         .bag-small {
             width: 267px;
-            height: 400px;
-            object-fit: cover;
+            height: auto;
         }
         .bag-full {
-            width: 551px;
-            height: 310px;
-            object-fit: cover;
+            width: auto;
+            height: auto;
+            max-width: 551px;
+            align-self: stretch;
         }
         @media (max-width: 992px) {
-            .bag-gallery-row {
+            .bag-top-row,
+            .bag-bottom-row,
+            .bag-outside-inside {
                 flex-direction: column;
                 align-items: center;
             }
@@ -93,14 +105,16 @@
             <section class="project-section">
                 <h2>Gallery</h2>
                 <div class="bag-gallery">
-                    <div class="bag-gallery-row">
-                        <img src="assets/bag_chess.jpg" alt="Tote bag with chess board pattern" class="bag-chess">
-                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Top row: outside and inside side by side -->
+                    <div class="bag-top-row">
+                        <div class="bag-outside-inside">
                             <img src="assets/bag_outside.jpg" alt="Tote bag outside" class="bag-small">
                             <img src="assets/bag_inside.jpg" alt="Tote bag inside" class="bag-small">
                         </div>
                     </div>
-                    <div class="bag-gallery-row">
+                    <!-- Bottom row: chess on left, full on right -->
+                    <div class="bag-bottom-row">
+                        <img src="assets/bag_chess.jpg" alt="Tote bag with chess board pattern" class="bag-chess">
                         <img src="assets/bag_full.jpg" alt="Tote bag full view" class="bag-full">
                     </div>
                 </div>

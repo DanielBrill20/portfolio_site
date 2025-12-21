@@ -20,25 +20,55 @@
             height: 300px;
             object-fit: cover;
         }
-        .mount-images-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        .mount-images-grid .image-with-caption img {
+        
+        /* Collage-style image layouts for sumobot */
+        .sumobot-collage {
+            position: relative;
             width: 100%;
-            max-width: 350px;
-            height: auto;
-            object-fit: cover;
+            max-width: 900px;
+            margin: 30px auto;
         }
-        .large-image-row {
+        
+        /* First collage: prototype designs and board images */
+        .mount-collage-1 {
             display: flex;
             gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
+            align-items: flex-end;
+            margin-bottom: 25px;
         }
+        
+        .mount-collage-2 {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .mount-collage-3 {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .sumobot-collage .image-with-caption {
+            text-align: center;
+        }
+        
+        .sumobot-collage .image-with-caption .caption {
+            margin-top: 8px;
+            font-size: 14px;
+            max-width: 100%;
+        }
+        
+        .dea-caption {
+            max-width: 280px;
+            margin: 0 auto;
+        }
+        
         @media (max-width: 992px) {
             .sumobot-hero-images {
                 flex-wrap: wrap;
@@ -46,6 +76,12 @@
             .sumobot-hero-images img {
                 width: 200px;
                 height: 200px;
+            }
+            .mount-collage-1,
+            .mount-collage-2,
+            .mount-collage-3 {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -82,10 +118,14 @@
                 <img src="assets/sumobot_back.jpg" alt="Sumobot Back">
             </div>
 
+            <!-- Intro Section (no header) -->
+            <section class="project-section">
+                <p>As part of my first rotation as a Software Engineer Co-op at GE Appliances, I led a team of two other co-ops in the creation of an autonomous sumobot. Throughout the semester, we competed against six other teams across three competitions, finishing with an undefeated record. We followed the official <a href="https://robogames.net/rules/all-sumo.php" target="_blank">RoboGames rules</a> for the Mini Sumo class.</p>
+            </section>
+
             <!-- Overview Section -->
             <section class="project-section">
                 <h2>Overview</h2>
-                <p>As part of my first rotation as a Software Engineer Co-op at GE Appliances, I led a team of two other co-ops in the creation of an autonomous sumobot. Throughout the semester, we competed against six other teams across three competitions, finishing with an undefeated record. We followed the official <a href="https://robogames.net/rules/all-sumo.php" target="_blank">RoboGames rules</a> for the Mini Sumo class.</p>
                 <p>For each match, our bot simply had to push the opponent out of the arena, called a Dohyo. The Dohyo is a small 77 cm diameter circle surrounded by a white border. Bots must be able to detect opponents, have the strength to push them, and stay within the Dohyo. Throughout the project, my focus was on the hardware and software related to bot movement and opponent detection.</p>
             </section>
 
@@ -96,44 +136,51 @@
                 <p>Through reading spec sheets and much empirical testing, I was able to determine the exact field of view of our sensors. I was also able to detect manufacturing/calibration imperfections to compensate for sensors that couldn't see as far, had a skewed field of view, etc. With this information, I designed a 3D sensor mount model. I went through several prototypes, including ones without the front or back sensors, but landed on a winning design.</p>
                 <p>The two side sensors looked forward and out at a roughly 15-degree angle to detect our opponent drifting towards our sides. When another bot moved off-center from ours, we corrected by spinning toward our opponent until only our front sensor detected anything. The mount secured snugly into existing holes on the Adafruit METRO M0 Express, the control board for our bot.</p>
 
-                <!-- Mount Images Grid -->
-                <div class="mount-images-grid">
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_mount_prototype_side.png" alt="Initial mount design" style="width: 272px; height: 184px;">
-                        <p class="caption">Initial mount design</p>
+                <!-- Mount Images Collage -->
+                <div class="sumobot-collage">
+                    <!-- Row 1: Initial design + Prototype on board + Final front -->
+                    <div class="mount-collage-1">
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_prototype_side.png" alt="Initial mount design" style="width: 220px; height: 149px;">
+                            <p class="caption">Initial mount design</p>
+                        </div>
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_on_board_top.jpg" alt="Prototype on board" style="width: 155px; height: 155px;">
+                            <p class="caption">Prototype on board</p>
+                        </div>
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_front.png" alt="Final mount design - front" style="width: 260px; height: 165px;">
+                            <p class="caption">Final mount design - front</p>
+                        </div>
                     </div>
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_mount_on_board_top.jpg" alt="Prototype on board" style="width: 155px; height: 155px;">
-                        <p class="caption">Prototype on board</p>
+                    
+                    <!-- Row 2: Final side + Underside pegs -->
+                    <div class="mount-collage-2">
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_side.png" alt="Final mount design - side" style="width: 300px; height: 203px;">
+                            <p class="caption">Final mount design - side</p>
+                        </div>
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_prototype_underside.png" alt="Underside pegs for Metro connection" style="width: 250px; height: 250px;">
+                            <p class="caption">Underside pegs for<br>Metro connection</p>
+                        </div>
                     </div>
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_mount_front.png" alt="Final mount design - front" style="width: 300px; height: 190px;">
-                        <p class="caption">Final mount design - front</p>
+                    
+                    <!-- Row 3: Metro board + Pegs inserted + DEA label -->
+                    <div class="mount-collage-3">
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_board.jpg" alt="Adafruit METRO M0 Express" style="width: 234px; height: 156px;">
+                            <p class="caption">Adafruit METRO M0 Express</p>
+                        </div>
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_on_board_front.jpg" alt="Pegs inserted into board" style="width: 220px; height: 147px;">
+                            <p class="caption">Pegs inserted into board</p>
+                        </div>
+                        <div class="image-with-caption">
+                            <img src="assets/sumobot_mount_DEA_label.png" alt="DEA nametag" style="width: 280px; height: auto;">
+                            <p class="caption dea-caption">DEA nametag—a playful combination<br>of the team's initials and<br>a reference to Breaking Bad</p>
+                        </div>
                     </div>
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_mount_side.png" alt="Final mount design - side" style="width: 351px; height: 238px;">
-                        <p class="caption">Final mount design - side</p>
-                    </div>
-                </div>
-
-                <div class="large-image-row">
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_mount_prototype_underside.png" alt="Underside pegs for Metro connection" style="width: 310px; height: 310px; object-fit: cover;">
-                        <p class="caption">Underside pegs for Metro connection</p>
-                    </div>
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_board.jpg" alt="Adafruit METRO M0 Express" style="width: 234px; height: 156px; object-fit: cover;">
-                        <p class="caption">Adafruit METRO M0 Express</p>
-                    </div>
-                    <div class="image-with-caption">
-                        <img src="assets/sumobot_mount_on_board_front.jpg" alt="Pegs inserted into board" style="width: 253px; height: 169px; object-fit: cover;">
-                        <p class="caption">Pegs inserted into board</p>
-                    </div>
-                </div>
-
-                <div class="image-with-caption" style="text-align: center; margin: 30px 0;">
-                    <img src="assets/sumobot_mount_DEA_label.png" alt="DEA nametag" style="max-width: 500px; width: 100%; height: auto;">
-                    <p class="caption">DEA nametag—a playful combination of the team's initials and a reference to Breaking Bad</p>
                 </div>
             </section>
 

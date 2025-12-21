@@ -136,12 +136,12 @@ main {
 
 /* Hero Section */
 .hero {
-    height: 500px;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 100px;
-    padding: 78px 100px 0;
+    padding: 120px 100px 40px;
 }
 
 .hero-image img {
@@ -152,11 +152,14 @@ main {
 
 .hero-text {
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-text h1 {
     font-family: 'Bebas Neue', cursive;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    line-height: 1;
 }
 
 .hero-text .line1 {
@@ -170,6 +173,8 @@ main {
 
 .hero-text .line2 {
     font-size: 48px;
+    margin-left: 80px;
+    margin-top: -10px;
 }
 
 .hero-text .line2 .highlight {
@@ -179,6 +184,8 @@ main {
 
 .hero-text .line3 {
     font-size: 64px;
+    margin-left: 40px;
+    margin-top: -5px;
 }
 
 .hero-text .line3 .highlight {
@@ -189,8 +196,10 @@ main {
 .hero-cta {
     font-size: 24px;
     margin-top: 20px;
+    margin-left: 40px;
     cursor: pointer;
     transition: color 0.3s ease;
+    display: block;
 }
 
 .hero-cta:hover {
@@ -205,7 +214,13 @@ main {
     align-items: center;
     justify-content: center;
     gap: 80px;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .bio-image img {
@@ -229,12 +244,12 @@ main {
 
 /* Projects Section */
 .projects-section {
-    padding: 40px 100px;
+    padding: 20px 100px 40px;
 }
 
 .project-row {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 50px;
     margin-bottom: 40px;
@@ -242,6 +257,14 @@ main {
 
 .project-row.reverse {
     flex-direction: row-reverse;
+}
+
+.project-row.reverse .project-info {
+    text-align: right;
+}
+
+.project-row.reverse .explore-btn {
+    display: inline-block;
 }
 
 .project-image-container {
@@ -279,7 +302,7 @@ main {
 
 /* Art Section */
 .art-section {
-    padding: 40px 100px;
+    padding: 20px 100px 40px;
 }
 
 .art-grid {
@@ -338,26 +361,42 @@ main {
 
 /* Contact Section */
 .contact-section {
-    padding: 60px 100px;
+    padding: 40px 100px 60px;
     text-align: center;
 }
 
 .contact-links {
     display: flex;
     justify-content: center;
-    gap: 100px;
-    margin-top: 40px;
+    gap: 60px;
+    margin-top: 30px;
 }
 
 .contact-link {
-    font-size: 32px;
-    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .contact-link:hover {
-    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.contact-link:hover svg {
+    fill: var(--orange);
+}
+
+.contact-link svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--white);
+    transition: fill 0.3s ease;
 }
 
 /* Project Pages */
@@ -592,6 +631,7 @@ main {
     width: 214px;
     height: 300px;
     perspective: 1000px;
+    -webkit-perspective: 1000px;
     cursor: pointer;
 }
 
@@ -601,10 +641,12 @@ main {
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
 .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .flip-card-front, .flip-card-back {
@@ -612,6 +654,7 @@ main {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .flip-card-front img, .flip-card-back img {
@@ -622,6 +665,7 @@ main {
 
 .flip-card-back {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 /* Art Project Gallery */
@@ -639,7 +683,7 @@ main {
 @media (max-width: 1200px) {
     .hero {
         gap: 50px;
-        padding: 78px 50px 0;
+        padding: 120px 50px 40px;
     }
     
     .hero-image img {
@@ -653,7 +697,7 @@ main {
     }
     
     .projects-section, .art-section, .contact-section {
-        padding: 40px 50px;
+        padding: 20px 50px;
     }
     
     .project-content {
@@ -706,6 +750,7 @@ main {
     
     .hero-text .line1, .hero-text .line2 {
         font-size: 36px;
+        margin-left: 0;
     }
     
     .hero-text .line1 .highlight, .hero-text .line2 .highlight {
@@ -714,10 +759,15 @@ main {
     
     .hero-text .line3 {
         font-size: 48px;
+        margin-left: 0;
     }
     
     .hero-text .line3 .highlight {
         font-size: 72px;
+    }
+    
+    .hero-cta {
+        margin-left: 0;
     }
     
     .bio-section {
@@ -728,6 +778,10 @@ main {
     .project-row, .project-row.reverse {
         flex-direction: column;
         align-items: center;
+    }
+    
+    .project-row.reverse .project-info {
+        text-align: center;
     }
     
     .project-info {
@@ -756,8 +810,8 @@ main {
     }
     
     .contact-links {
-        flex-direction: column;
-        gap: 30px;
+        flex-direction: row;
+        gap: 40px;
     }
     
     .album-images {

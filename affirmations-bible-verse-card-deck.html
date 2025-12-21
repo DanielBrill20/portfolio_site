@@ -42,6 +42,7 @@
             width: 214px;
             height: 300px;
             perspective: 1000px;
+            -webkit-perspective: 1000px;
             cursor: pointer;
         }
         .flip-card-inner {
@@ -50,15 +51,18 @@
             height: 100%;
             transition: transform 0.6s;
             transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
         }
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
         }
         .flip-card-front, .flip-card-back {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -69,6 +73,7 @@
         }
         .flip-card-back {
             transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
         }
         @media (max-width: 768px) {
             .card-row {
@@ -107,7 +112,7 @@
             <img src="assets/cards_decorative.jpg" alt="Affirmations Bible Verse Card Deck" class="cards-hero-image">
 
             <!-- Description -->
-            <div class="project-description">
+            <div class="project-description" style="text-align: left;">
                 <p>I partnered with Chester Christian Center (CCC) to design and produce an effective and easily digestible teaching solution for a foster ministry outreach event.</p>
                 <p>CCC regularly volunteers with Geauga Job and Family Services to reach kids and young adults who have grown up in foster care. During the holidays, many lack a "traditional" family environment that others look forward to. For December 2023, CCC planned a holiday party where kids could enjoy dinner, games, gifts, and holiday spirit. They also wanted to provide affirmations and a sense of love that can last long after the event.</p>
                 <p>I worked with CCC leaders to brainstorm and design an artistic presentation of a series of thematic Bible verses. The goal was to create a small "stocking stuffer" that can be easily set aside during gift-opening while also being eye-catching enough to not find its way into the trash. The emphasis was on interactivity and presentation, turning what could have been a "reading assignment" into organic learning.</p>
@@ -123,7 +128,7 @@
                 <div class="card-grid">
                     <!-- Row 1: 3 cards -->
                     <div class="card-row">
-                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="assets/cards_cover_front.png" alt="Card Cover Front">
@@ -133,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="assets/cards_back_red.png" alt="Card Back Red">
@@ -143,7 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="assets/cards_back_green.png" alt="Card Back Green">
@@ -157,7 +162,7 @@
                     
                     <!-- Row 2: 2 cards -->
                     <div class="card-row">
-                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="assets/cards_back_red.png" alt="Card Back Red">
@@ -167,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
                                     <img src="assets/cards_back_green.png" alt="Card Back Green">

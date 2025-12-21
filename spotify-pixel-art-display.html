@@ -13,12 +13,8 @@
             display: flex;
             gap: 25px;
             justify-content: center;
+            align-items: center;
             margin: 20px 0;
-        }
-        .spotify-album-images img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
         }
         .spotify-album-images .image-with-caption {
             text-align: center;
@@ -26,57 +22,97 @@
         .spotify-album-images .image-with-caption .caption {
             margin-top: 10px;
         }
-        .spotify-layout {
-            display: flex;
-            gap: 50px;
-            margin: 40px 0;
+        .spotify-album-images .image-with-caption:nth-child(1) img,
+        .spotify-album-images .image-with-caption:nth-child(3) img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
         }
-        .spotify-layout .text-column {
-            flex: 0 0 365px;
+        .spotify-album-images .image-with-caption:nth-child(2) img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
         }
-        .spotify-layout .media-column {
-            flex: 1;
+        .spotify-overview-section {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+        }
+        .spotify-overview-section h2 {
+            align-self: flex-start;
+        }
+        .spotify-overview-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .spotify-overview-content .overview-text {
+            text-align: left;
+            max-width: 700px;
+        }
+        .spotify-overview-media {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
         .spotify-pi-image {
             width: 273px;
             height: 154px;
             object-fit: cover;
         }
-        .spotify-gol-video {
+        .spotify-gol-video-container {
             width: 460px;
             aspect-ratio: 16/9;
+            position: relative;
         }
-        .tech-images-grid {
-            display: grid;
-            grid-template-columns: auto auto;
-            gap: 15px;
+        .spotify-gol-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Technical Highlights - images on left, text on right */
+        .tech-highlights-section {
+            display: flex;
+            gap: 50px;
             margin: 40px 0;
         }
-        .tech-images-grid .left-column {
+        .tech-highlights-section .images-column {
+            flex: 0 0 auto;
+        }
+        .tech-highlights-section .text-column {
+            flex: 1;
+        }
+        .tech-images-collage {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
-        .tech-images-grid .right-column {
+        .tech-images-row {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
         }
+        .tech-images-row-bottom {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        
         @media (max-width: 992px) {
-            .spotify-layout {
-                flex-direction: column;
-            }
-            .spotify-layout .text-column {
-                flex: 1;
-            }
             .spotify-album-images {
                 flex-wrap: wrap;
             }
-            .tech-images-grid {
-                grid-template-columns: 1fr;
+            .tech-highlights-section {
+                flex-direction: column;
             }
         }
     </style>
@@ -108,7 +144,7 @@
 
         <div class="project-content">
             <!-- Hero Video -->
-            <div class="project-hero-media">
+            <div class="project-hero-media" style="margin-top: 10px;">
                 <iframe src="https://player.vimeo.com/video/1147558667?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="matrix_song_demo"></iframe>
             </div>
 
@@ -134,28 +170,56 @@
             </div>
 
             <!-- Overview Section -->
-            <section class="project-section">
+            <section class="project-section spotify-overview-section">
                 <h2>Overview</h2>
-                <div class="spotify-layout">
-                    <div class="text-column">
-                        <p>The core of the project is a backend Python server that repeatedly calls the Spotify Web API to get the currently playing track or podcast episode for the user. The script runs on a Raspberry Pi Zero 2 W that I plan on turning into a sort of "home assistant" and the hub for various IoT projects. Once the server detects a change in album cover, it prepares the image to be displayed on the LED matrix. It then sends the data via an HTTP request to an ESP32-S3, which controls the matrix. This has been a passion project of mine that I first dreamt up when I began my first year as a Computer Science student. I also used it as an opportunity to learn the <a href="https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA" target="_blank">ESP32-HUB75-MatrixPanel-DMA library</a>, more about the ESP-IDF framework, and embedded constraints like memory types and how to store large buffers.</p>
-                    </div>
-                    <div class="media-column">
+                <div class="spotify-overview-content">
+                    <p class="overview-text">The core of the project is a backend Python server that repeatedly calls the Spotify Web API to get the currently playing track or podcast episode for the user. The script runs on a Raspberry Pi Zero 2 W that I plan on turning into a sort of "home assistant" and the hub for various IoT projects. Once the server detects a change in album cover, it prepares the image to be displayed on the LED matrix. It then sends the data via an HTTP request to an ESP32-S3, which controls the matrix. This has been a passion project of mine that I first dreamt up when I began my first year as a Computer Science student. I also used it as an opportunity to learn the <a href="https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA" target="_blank">ESP32-HUB75-MatrixPanel-DMA library</a>, more about the ESP-IDF framework, and embedded constraints like memory types and how to store large buffers.</p>
+                    <div class="spotify-overview-media">
                         <div class="image-with-caption">
                             <img src="assets/matrix_pi.jpg" alt="Raspberry Pi Zero 2 W" class="spotify-pi-image">
                             <p class="caption">Raspberry Pi Zero 2 W running the server</p>
                         </div>
-                        <div class="video-container" style="padding-bottom: 56.25%; max-width: 460px;">
+                    </div>
+                    <div class="spotify-overview-media">
+                        <div class="spotify-gol-video-container">
                             <iframe src="https://player.vimeo.com/video/1147558569?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="matrix_gol_demo"></iframe>
                         </div>
-                        <p class="caption" style="text-align: center;">Game of Life demo</p>
+                        <p class="caption">Game of Life demo</p>
                     </div>
                 </div>
             </section>
 
             <!-- Technical Highlights Section -->
             <section class="project-section">
-                <div class="two-column">
+                <div class="tech-highlights-section">
+                    <div class="images-column">
+                        <div class="tech-images-collage">
+                            <div class="tech-images-row">
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_pins.jpg" alt="ESP HUB75 pinout" style="width: 200px; height: 133px; object-fit: cover;">
+                                    <p class="caption">ESP HUB75 pinout</p>
+                                </div>
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_put_together.jpg" alt="Complete matrix setup" style="width: 200px; height: 200px; object-fit: cover;">
+                                    <p class="caption">Complete matrix setup</p>
+                                </div>
+                            </div>
+                            <div class="tech-images-row-bottom">
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_power_wires.jpg" alt="Power cables" style="width: 130px; height: 163px; object-fit: cover;">
+                                    <p class="caption">Power cables</p>
+                                </div>
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_back.jpg" alt="Back of matrix" style="width: 125px; height: 125px; object-fit: cover;">
+                                    <p class="caption">Back of matrix</p>
+                                </div>
+                                <div class="image-with-caption">
+                                    <img src="assets/matrix_acrylic.jpg" alt="Front of matrix with acrylic diffuser" style="width: 125px; height: 125px; object-fit: cover;">
+                                    <p class="caption">Front of matrix with<br>acrylic diffuser</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="text-column">
                         <h2>Technical Highlights</h2>
                         <ul class="tech-highlights">
@@ -164,36 +228,6 @@
                             <li>The firmware relies on numerous dependencies in the form of git submodules. Several conflicts arise that can be resolved through ESP-IDF's CMakeLists.txt files. To simplify development, I've added custom scripts to apply patches to each submodule and resolve conflicts.</li>
                             <li>Attached to the panel is a translucent piece of black acrylic, which acts as a slight diffuser screen, increases contrast, and hides unlit pixels.</li>
                         </ul>
-                    </div>
-                    <div class="media-column">
-                        <div class="tech-images-grid">
-                            <div class="left-column">
-                                <div class="image-with-caption">
-                                    <img src="assets/matrix_pins.jpg" alt="ESP HUB75 pinout" style="width: 200px; height: 133px; object-fit: cover;">
-                                    <p class="caption">ESP HUB75 pinout</p>
-                                </div>
-                                <div class="image-with-caption">
-                                    <img src="assets/matrix_power_wires.jpg" alt="Power cables" style="width: 164px; height: 205px; object-fit: cover;">
-                                    <p class="caption">Power cables</p>
-                                </div>
-                            </div>
-                            <div class="right-column">
-                                <div class="image-with-caption">
-                                    <img src="assets/matrix_put_together.jpg" alt="Complete matrix setup" style="width: 200px; height: 200px; object-fit: cover;">
-                                    <p class="caption">Complete matrix setup</p>
-                                </div>
-                                <div style="display: flex; gap: 15px;">
-                                    <div class="image-with-caption">
-                                        <img src="assets/matrix_back.jpg" alt="Back of matrix" style="width: 125px; height: 125px; object-fit: cover;">
-                                        <p class="caption">Back of matrix</p>
-                                    </div>
-                                    <div class="image-with-caption">
-                                        <img src="assets/matrix_acrylic.jpg" alt="Front of matrix with acrylic diffuser" style="width: 125px; height: 125px; object-fit: cover;">
-                                        <p class="caption">Front of matrix with<br>acrylic diffuser</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>

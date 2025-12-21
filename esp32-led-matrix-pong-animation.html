@@ -9,20 +9,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .pong-layout {
+        .pong-hero-layout {
+            display: flex;
+            gap: 50px;
+            margin: 0 0 40px;
+            align-items: flex-start;
+        }
+        .pong-hero-layout .image-column {
+            flex: 0 0 auto;
+        }
+        .pong-hero-layout .image-column img {
+            width: 400px;
+            height: auto;
+        }
+        .pong-hero-layout .description-column {
+            flex: 1;
+        }
+        .pong-overview-layout {
             display: flex;
             gap: 50px;
             margin: 40px 0;
             align-items: flex-start;
         }
-        .pong-layout .text-column {
-            flex: 0 0 367px;
-        }
-        .pong-layout .video-column {
+        .pong-overview-layout .text-column {
             flex: 1;
         }
+        .pong-overview-layout .video-column {
+            flex: 0 0 auto;
+        }
         .pong-video-container {
-            width: 535px;
+            width: 450px;
             aspect-ratio: 1/1;
             position: relative;
         }
@@ -34,15 +50,23 @@
             height: 100%;
         }
         @media (max-width: 992px) {
-            .pong-layout {
+            .pong-hero-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pong-hero-layout .image-column img {
+                width: 100%;
+                max-width: 400px;
+            }
+            .pong-overview-layout {
                 flex-direction: column;
             }
-            .pong-layout .text-column {
+            .pong-overview-layout .text-column {
                 flex: 1;
             }
             .pong-video-container {
                 width: 100%;
-                max-width: 535px;
+                max-width: 450px;
             }
         }
     </style>
@@ -73,21 +97,21 @@
         </header>
 
         <div class="project-content">
-            <!-- Hero Image -->
-            <div class="project-hero-media">
-                <img src="assets/pong_still.png" alt="Pong Animation Still" style="max-width: 650px; width: 100%;">
-            </div>
-
-            <!-- Description -->
-            <div class="project-description">
-                <p>Since I began coding in 2020, I have frequently recreated Pong anytime I'm experimenting with a new language or visual interface. It has been a sort of litmus test to explore what's possible, like my own "Hello World" project. My goal for this project was to take advantage of the quick prototyping nature of the Arduino framework to explore the <a href="https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA" target="_blank">ESP32-HUB75-MatrixPanel-DMA library</a>. In doing so, I was able to get my first sketch running on a HUB75 LED matrix with a smooth framerate and no artifacting. The result? A CPU-controlled Pong simulation in an eternal battle between two bots.</p>
+            <!-- Hero Image with Description -->
+            <div class="pong-hero-layout">
+                <div class="image-column">
+                    <img src="assets/pong_still.png" alt="Pong Animation Still">
+                </div>
+                <div class="description-column">
+                    <p>Since I began coding in 2020, I have frequently recreated Pong anytime I'm experimenting with a new language or visual interface. It has been a sort of litmus test to explore what's possible, like my own "Hello World" project. My goal for this project was to take advantage of the quick prototyping nature of the Arduino framework to explore the <a href="https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA" target="_blank">ESP32-HUB75-MatrixPanel-DMA library</a>. In doing so, I was able to get my first sketch running on a HUB75 LED matrix with a smooth framerate and no artifacting. The result? A CPU-controlled Pong simulation in an eternal battle between two bots.</p>
+                </div>
             </div>
 
             <!-- Overview Section -->
             <section class="project-section">
-                <h2>Overview</h2>
-                <div class="pong-layout">
+                <div class="pong-overview-layout">
                     <div class="text-column">
+                        <h2>Overview</h2>
                         <p>Coded purely in C++, two classes define Paddle and Ball objects. Each object includes instructions for how it is drawn on the matrix, custom movement and collision logic, and pseudo-random fluctuations to provide visual interest and unpredictability. The simple shapes of Pong easily allow the Adafruit GFX Graphics Library to do some visual heavy lifting, providing performance advantages over direct pixel manipulation. The Arduino setup function handles LED matrix initialization, and the loop controls frame updates on the matrix at a consistent 60 FPS.</p>
                     </div>
                     <div class="video-column">
