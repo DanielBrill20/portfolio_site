@@ -89,19 +89,48 @@
         .tech-images-collage {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 25px;
         }
-        /* Top row: pinout (200x133) and matrix_put_together (200x200) - vertically centered */
-        .tech-images-row-top {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        /* Bottom row: power wires, back, diffuser - vertically centered */
+        /* Each row: rows centered horizontally */
+        .tech-images-row-top,
         .tech-images-row-bottom {
             display: flex;
+            gap: 20px;
+        }
+        .tech-images-row-top .image-with-caption,
+        .tech-images-row-bottom .image-with-caption {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .tech-images-row-top .image-with-caption .caption,
+        .tech-images-row-bottom .image-with-caption .caption {
+            margin-top: 8px;
+        }
+        /* Top row: use align-items center since captions are similar height */
+        .tech-images-row-top {
+            align-items: center;
+        }
+        /* Bottom row: center images vertically, captions don't affect centering */
+        .tech-images-row-bottom {
             gap: 25px;
             align-items: center;
+        }
+        .tech-images-row-bottom .image-with-caption {
+            position: relative;
+        }
+        .tech-images-row-bottom .image-with-caption .caption {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        /* Add padding to collage bottom to make room for absolutely positioned captions */
+        .tech-images-row-bottom {
+            margin-bottom: 50px;
         }
         
         @media (max-width: 992px) {
@@ -197,7 +226,7 @@
                 <div class="tech-highlights-layout">
                     <div class="images-column">
                         <div class="tech-images-collage">
-                            <!-- Top row: pinout and matrix setup - vertically centered -->
+                            <!-- Top row: pinout and matrix setup - images vertically centered -->
                             <div class="tech-images-row-top">
                                 <div class="image-with-caption">
                                     <img src="assets/matrix_pins.jpg" alt="ESP HUB75 pinout" style="width: 200px; height: 133px;">
@@ -208,7 +237,7 @@
                                     <p class="caption">Complete matrix setup</p>
                                 </div>
                             </div>
-                            <!-- Bottom row: power, back, diffuser - vertically centered -->
+                            <!-- Bottom row: power, back, diffuser - images vertically centered -->
                             <div class="tech-images-row-bottom">
                                 <div class="image-with-caption">
                                     <img src="assets/matrix_power_wires.jpg" alt="Power cables" style="width: 164px; height: 205px;">
