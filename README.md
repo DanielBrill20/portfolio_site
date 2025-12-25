@@ -3,7 +3,7 @@
 A single-page portfolio with individual project detail pages. Built with vanilla HTML, CSS, and a small JS nav toggle. Live-hosted via GitHub Pages.
 
 ## Live Site
-- GitHub Pages: <your-pages-url-here>
+- GitHub Pages: https://danielbrill20.github.io/portfolio_site/
 
 ## Structure
 - `index.html` — landing page (hero, bio, projects, art, contact)
