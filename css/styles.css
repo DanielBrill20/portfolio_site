@@ -24,6 +24,7 @@ body {
     color: var(--white);
     line-height: 1.6;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 /* Typography */
@@ -777,9 +778,14 @@ main {
         text-align: center;
     }
     
-    .hero-text .line1, .hero-text .line2 {
+    .hero-text .line1 {
         font-size: 36px;
         margin-left: 0;
+    }
+    
+    .hero-text .line2 {
+        font-size: 36px;
+        margin-left: 60px;
     }
     
     .hero-text .line1 .highlight, .hero-text .line2 .highlight {

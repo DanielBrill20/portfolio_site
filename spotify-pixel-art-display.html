@@ -134,14 +134,51 @@
             .spotify-album-images {
                 flex-wrap: wrap;
             }
+            .spotify-album-images .image-with-caption:nth-child(1) img,
+            .spotify-album-images .image-with-caption:nth-child(3) img {
+                width: 150px;
+                height: 150px;
+            }
+            .spotify-album-images .image-with-caption:nth-child(2) img {
+                max-width: 100%;
+                height: auto;
+            }
             .spotify-overview-layout {
                 flex-direction: column;
             }
             .spotify-overview-layout .text-column {
                 flex: 1;
             }
+            .spotify-overview-layout .media-column {
+                width: 100%;
+            }
+            .spotify-gol-video-container {
+                width: 100%;
+                max-width: 100%;
+            }
+            .spotify-pi-image {
+                max-width: 100%;
+                height: auto;
+            }
             .tech-highlights-layout {
                 flex-direction: column;
+            }
+            /* Single column layout for tech highlight images on mobile */
+            .tech-images-row-top,
+            .tech-images-row-bottom {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tech-images-row-top img,
+            .tech-images-row-bottom img {
+                max-width: 100%;
+                height: auto !important;
+                width: auto !important;
+            }
+            .tech-images-row-bottom .image-with-caption .caption {
+                position: static;
+                transform: none;
+                white-space: normal;
             }
         }
     </style>
